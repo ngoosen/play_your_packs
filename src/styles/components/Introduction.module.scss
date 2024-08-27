@@ -1,0 +1,7 @@
+$padding: 10vh;
+
+.main {
+  height: calc(50vh - ($padding * 2));
+
+  padding: $padding 0;
+}
