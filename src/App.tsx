@@ -2,7 +2,8 @@ import './App.css';
 
 import Title from './components/Title';
 import Introduction from './components/Introduction';
-import PackSelection from './components/RulesIntro';
+import RulesIntro from './components/RulesIntro';
+import PackSelection from './components/PackSelection';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Title />
       <main>
         <Introduction />
+        <RulesIntro />
         <PackSelection />
       </main>
     </>

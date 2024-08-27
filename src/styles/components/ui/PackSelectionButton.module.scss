@@ -1,0 +1,21 @@
+.main {
+  appearance: none;
+  border: none;
+
+  width: 250px;
+  height: 250px;
+
+  padding: 0;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 100%;
+
+    object-position: 50%;
+    object-fit: cover;
+  }
+}
