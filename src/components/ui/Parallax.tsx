@@ -2,7 +2,7 @@ import styles from "../../styles/components/ui/Parallax.module.scss";
 
 interface IParallaxProps {
   img: string
-  children?: JSX.Element
+  children?: JSX.Element | JSX.Element[]
   className?: string;
 }
 

@@ -1,7 +1,8 @@
 import './App.css';
 
-import Introduction from './components/Introduction';
 import Title from './components/Title';
+import Introduction from './components/Introduction';
+import PackSelection from './components/RulesIntro';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Title />
       <main>
         <Introduction />
+        <PackSelection />
       </main>
     </>
   );
