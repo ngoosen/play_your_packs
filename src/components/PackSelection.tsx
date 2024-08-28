@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
 import styles from "../styles/components/PackSelection.module.scss";
+
 import PackSelectionButton from "./ui/PackSelectionButton";
+import PackOrder from "./PackOrder";
 
 export enum PACKS {
   GET_TO_WORK,
@@ -66,6 +68,8 @@ export default function PackSelection(): JSX.Element {
       <PackSelectionButton pack={PACKS.HORSE_RANCH} onClick={clickHandler} selected={selection.includes(PACKS.HORSE_RANCH)} />
       <PackSelectionButton pack={PACKS.FOR_RENT} onClick={clickHandler} selected={selection.includes(PACKS.FOR_RENT)} />
       <PackSelectionButton pack={PACKS.LOVESTRUCK} onClick={clickHandler} selected={selection.includes(PACKS.LOVESTRUCK)} />
+
+      <PackOrder selectedPacks={selection} />
     </section>
   );
 }
