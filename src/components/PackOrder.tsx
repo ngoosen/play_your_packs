@@ -79,7 +79,7 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
       <div className={styles.packs}>
         {selectedPacks.length === 0 && <p className={styles.no_selection}>Tes packs sélectionnés apparaîtront ici.</p>}
 
-        {!reordered && <p>Ordre recommandé:</p>}
+        {(selectedPacks.length > 0 && !reordered) && <p>Ordre recommandé:</p>}
 
         {selectedPacks.length > 0 && order.map(pack => <PackOrderSlider key={`pack_slider_${pack}`} pack={pack} onReorder={reorderHandler} />)}
       </div>
