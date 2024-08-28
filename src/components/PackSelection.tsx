@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import styles from "../styles/components/PackSelection.module.scss";
 
@@ -27,10 +27,6 @@ export enum PACKS {
 export default function PackSelection(): JSX.Element {
   const [selection, setSelection] = useState<PACKS[]>([]);
 
-  useEffect(() => {
-    console.log(selection);
-  }, [selection]);
-
   function clickHandler(pack: PACKS) {
     setSelection(latest => {
       let returnArray: PACKS[] = [];
@@ -56,7 +52,6 @@ export default function PackSelection(): JSX.Element {
       <PackSelectionButton pack={PACKS.GET_TOGETHER} onClick={clickHandler} selected={selection.includes(PACKS.GET_TOGETHER)} />
       <PackSelectionButton pack={PACKS.CITY_LIVING} onClick={clickHandler} selected={selection.includes(PACKS.CITY_LIVING)} />
       <PackSelectionButton pack={PACKS.CATS_AND_DOGS} onClick={clickHandler} selected={selection.includes(PACKS.CATS_AND_DOGS)} />
-      <PackSelectionButton pack={PACKS.SEASONS} onClick={clickHandler} selected={selection.includes(PACKS.SEASONS)} />
       <PackSelectionButton pack={PACKS.GET_FAMOUS} onClick={clickHandler} selected={selection.includes(PACKS.GET_FAMOUS)} />
       <PackSelectionButton pack={PACKS.ISLAND_LIVING} onClick={clickHandler} selected={selection.includes(PACKS.ISLAND_LIVING)} />
       <PackSelectionButton pack={PACKS.DISCOVER_UNIVERSITY} onClick={clickHandler} selected={selection.includes(PACKS.DISCOVER_UNIVERSITY)} />

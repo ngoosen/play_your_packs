@@ -1,5 +1,6 @@
 .main {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
@@ -9,4 +10,38 @@
 
   border-radius: 10px;
   background-color: chartreuse;
+
+  .sort_arrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%;
+
+    button {
+      appearance: none;
+      border: none;
+      background-color: transparent;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 40%;
+
+      .arrow {
+        color: rebeccapurple;
+        font-size: 16px;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        .arrow {
+          color: #ffffff;
+        }
+      }
+    }
+  }
 }

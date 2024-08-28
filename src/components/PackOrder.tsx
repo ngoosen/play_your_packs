@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styles from "../styles/components/PackOrder.module.scss";
 
 import { PACKS } from "./PackSelection";
@@ -8,8 +9,57 @@ interface IPackOrderProps {
   selectedPacks: PACKS[]
 }
 
+const recommendedOrder: PACKS[] = [12, 11, 7, 9, 6, 8, 5, 13, 10, 0, 1, 3, 2, 15, 14];
+
 export default function PackOrder(props: IPackOrderProps): JSX.Element {
   const { selectedPacks, } = props;
+
+  const [order, setOrder] = useState<PACKS[]>([]);
+  const [reordered, setReordered] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (reordered) {
+      setOrder(selectedPacks); //TODO: keep previous order but add/delete new selection
+    } else {
+      setOrder(recommendedOrder.filter(p => selectedPacks.includes(p)));
+    }
+  }, [selectedPacks, reordered]);
+
+  function reorderHandler(pack: PACKS, direction: "up" | "down") {
+    setReordered(true);
+
+    setOrder(latest => {
+      if (direction === "up") {
+        if (latest[0] === pack) {
+          return latest;
+        }
+
+        const packIndex = latest.indexOf(pack);
+
+        const before = latest.slice(0, packIndex);
+        const after = latest.slice(packIndex + 1);
+
+        const newArray = [...before, ...after];
+        newArray.splice(packIndex - 1, 0, pack)
+
+        return newArray;
+      } else {
+        if (latest.slice(-1)[0] === pack) {
+          return latest;
+        }
+
+        const packIndex = latest.indexOf(pack);
+
+        const before = latest.slice(0, packIndex);
+        const after = latest.slice(packIndex + 1);
+
+        const newArray = [...before, ...after];
+        newArray.splice(packIndex + 1, 0, pack);
+
+        return newArray;
+      }
+    });
+  }
 
   return (
     <section className={styles.main}>
@@ -20,7 +70,9 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
       <div className={styles.packs}>
         {selectedPacks.length === 0 && <p className={styles.no_selection}>Tes packs sélectionnés apparaîtront ici.</p>}
 
-        {selectedPacks.length > 0 && selectedPacks.map(pack => <PackOrderSlider key={`pack_slider_${pack}`} pack={pack} />)}
+        {!reordered && <p>Ordre recommandé:</p>}
+
+        {selectedPacks.length > 0 && order.map(pack => <PackOrderSlider key={`pack_slider_${pack}`} pack={pack} onReorder={reorderHandler} />)}
       </div>
     </section>
   );
