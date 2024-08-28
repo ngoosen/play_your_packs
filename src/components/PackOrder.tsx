@@ -19,11 +19,20 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
 
   useEffect(() => {
     if (reordered) {
-      setOrder(selectedPacks); //TODO: keep previous order but add/delete new selection
+      setOrder(latest => {
+        if (selectedPacks.length < latest.length) {
+          return latest.filter(p => selectedPacks.includes(p));
+        } else {
+          const newPack = selectedPacks.filter(p => !latest.includes(p));
+
+          return [...latest, newPack[0]];
+        }
+      });
     } else {
       setOrder(recommendedOrder.filter(p => selectedPacks.includes(p)));
     }
-  }, [selectedPacks, reordered]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPacks]);
 
   function reorderHandler(pack: PACKS, direction: "up" | "down") {
     setReordered(true);
