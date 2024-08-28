@@ -11,6 +11,10 @@
 
   overflow: hidden;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   img {
     height: 100%;
     width: 100%;

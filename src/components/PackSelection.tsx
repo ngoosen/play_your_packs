@@ -45,6 +45,11 @@ export default function PackSelection(): JSX.Element {
 
   return (
     <section className={styles.main}>
+      <div>
+        <h3>Sélectionne tes packs</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nam aliquam voluptatem labore ullam doloribus, harum cumque quis dolor unde facilis debitis, accusamus at eum officia sapiente quo fugiat omnis?</p>
+      </div>
+
       <PackSelectionButton pack={PACKS.GET_TO_WORK} onClick={clickHandler} selected={selection.includes(PACKS.GET_TO_WORK)} />
       <PackSelectionButton pack={PACKS.GET_TOGETHER} onClick={clickHandler} selected={selection.includes(PACKS.GET_TOGETHER)} />
       <PackSelectionButton pack={PACKS.CITY_LIVING} onClick={clickHandler} selected={selection.includes(PACKS.CITY_LIVING)} />
