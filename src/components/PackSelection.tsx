@@ -44,7 +44,7 @@ export default function PackSelection(): JSX.Element {
 
   function toggleAllHandler(selectAll: boolean) {
     if (selectAll) {
-      setSelection([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+      setSelection([0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
     } else {
       setSelection([]);
     }
@@ -55,7 +55,7 @@ export default function PackSelection(): JSX.Element {
       <div>
         <h3>Sélectionne tes packs</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nam aliquam voluptatem labore ullam doloribus, harum cumque quis dolor unde facilis debitis, accusamus at eum officia sapiente quo fugiat omnis?</p>
-        <SelectAllPacksButton onToggle={toggleAllHandler} />
+        <SelectAllPacksButton currentSelection={selection} onToggle={toggleAllHandler} />
       </div>
 
       <PackSelectionButton pack={PACKS.GET_TO_WORK} onClick={clickHandler} selected={selection.includes(PACKS.GET_TO_WORK)} />
