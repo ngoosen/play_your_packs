@@ -42,18 +42,18 @@
       justify-content: center;
       align-items: center;
 
-      height: 40%;
+      height: 45%;
 
       .arrow {
-        color: rebeccapurple;
-        font-size: 16px;
+        color: #ffffff;
+        font-size: 30px;
       }
 
       &:hover {
         cursor: pointer;
 
         .arrow {
-          color: #ffffff;
+          color: #ffffff7a;
         }
       }
     }
