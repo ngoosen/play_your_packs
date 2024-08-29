@@ -10,7 +10,7 @@ interface IPackOrderSliderProps {
   onReorder: CallableFunction
 }
 
-function getBackgroundColor(pack: PACKS): string {
+function getBackground(pack: PACKS): { color: string, shadow: string, } {
   switch (pack) {
     case 0:
     case 1:
@@ -20,14 +20,14 @@ function getBackgroundColor(pack: PACKS): string {
     case 8:
     case 10:
     case 11:
-    case 14: return "#485ad6";
+    case 14: return { color: "#485ad6", shadow: "inset -30vw 0 100px -70px #394abb", };
     case 3:
     case 12:
     case 13:
-    case 15: return "#da448c";
+    case 15: return { color: "#da448c", shadow: "inset -30vw 0 100px -70px #be3779", };
     case 6:
-    case 9: return "#59b047";
-    default: return "";
+    case 9: return { color: "#59b047", shadow: "inset -30vw 0 100px -70px #459236", };
+    default: return { color: "", shadow: "", };
   }
 }
 
@@ -65,7 +65,11 @@ export default function PackOrderSlider(props: IPackOrderSliderProps): JSX.Eleme
   }
 
   return (
-    <div className={styles.main} style={{ backgroundImage: `url(/img/packs/sliders/${pack}.jpg)`, backgroundColor: getBackgroundColor(pack), }}>
+    <div className={styles.main} style={{
+      backgroundImage: `url(/img/packs/sliders/${pack}.jpg)`,
+      backgroundColor: getBackground(pack).color,
+      boxShadow: getBackground(pack).shadow,
+    }}>
       <p className={styles.pack_title}>{getPackName(pack)}</p>
       <div className={styles.sort_arrows}>
         <button onClick={upHandler}>
