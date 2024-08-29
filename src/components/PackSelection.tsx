@@ -2,8 +2,9 @@ import { useState } from "react";
 
 import styles from "../styles/components/PackSelection.module.scss";
 
-import PackSelectionButton from "./ui/PackSelectionButton";
 import PackOrder from "./PackOrder";
+import PackSelectionButton from "./ui/PackSelectionButton";
+import SelectAllPacksButton from "./ui/SelectAllPacksButton";
 
 export enum PACKS {
   GET_TO_WORK,
@@ -41,11 +42,20 @@ export default function PackSelection(): JSX.Element {
     });
   }
 
+  function toggleAllHandler(selectAll: boolean) {
+    if (selectAll) {
+      setSelection([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+    } else {
+      setSelection([]);
+    }
+  }
+
   return (
     <section className={styles.main}>
       <div>
         <h3>Sélectionne tes packs</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nam aliquam voluptatem labore ullam doloribus, harum cumque quis dolor unde facilis debitis, accusamus at eum officia sapiente quo fugiat omnis?</p>
+        <SelectAllPacksButton onToggle={toggleAllHandler} />
       </div>
 
       <PackSelectionButton pack={PACKS.GET_TO_WORK} onClick={clickHandler} selected={selection.includes(PACKS.GET_TO_WORK)} />
