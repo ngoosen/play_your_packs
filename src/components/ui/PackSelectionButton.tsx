@@ -17,7 +17,7 @@ export default function PackSelectionButton(props: IPackSelectionButtonProps): J
 
   return (
     <button className={styles.main} onClick={clickHandler}>
-      <img src={`/img/packs/${pack}.avif`} alt="" style={{ opacity: selected ? 1 : .7, }} />
+      <img src={`/img/packs/fr/buttons/${pack}.avif`} alt="" style={{ opacity: selected ? 1 : .7, }} />
     </button>
   );
 }
