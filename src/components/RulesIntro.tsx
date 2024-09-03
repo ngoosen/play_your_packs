@@ -4,7 +4,7 @@ import Parallax from "./ui/Parallax";
 
 export default function RulesIntro(): JSX.Element {
   return (
-    <Parallax img="/img/landing_placeholder.jpg" className={styles.main}>
+    <Parallax img="/img/background.jpg" className={styles.main}>
       <section>
         <h3>Principe</h3>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo aspernatur eaque facere, debitis facilis est esse sapiente. Maxime dicta tempore minus sit recusandae eaque quia animi voluptatem eum temporibus. Ea vel, nam fuga nemo, error minus neque, optio maiores eveniet ut deserunt rem ratione eos dignissimos sapiente quibusdam similique perspiciatis. Voluptates, placeat provident laboriosam saepe repellat explicabo voluptate nihil cupiditate odio omnis, iste nostrum neque natus. Reprehenderit possimus vel earum eius tenetur quam alias voluptates dignissimos! Facilis nostrum, vel tenetur quisquam delectus dolorem fugiat aperiam ex pariatur animi cumque in enim deleniti. Nam, esse maxime impedit corporis asperiores facilis cumque?</p>
