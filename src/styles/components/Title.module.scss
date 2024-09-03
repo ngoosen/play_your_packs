@@ -6,4 +6,47 @@
   height: 350px;
 
   background-position: top !important;
+
+  .title {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 887px;
+    min-width: 887px;
+    height: 243px;
+
+    background-image: url("../../../public/img/title_background.jpg");
+    background-repeat: no-repeat;
+
+    h1 {
+      font-family: "Poppins", sans-serif;
+
+      position: relative;
+      color: #FFFFFF;
+
+      #asaide {
+        position: absolute;
+        top: -20px;
+        left: 60px;
+
+        font-size: 40px;
+      }
+
+      #play {
+        font-size: 60px;
+      }
+
+      #challenge {
+        position: absolute;
+        top: 58px;
+        right: 0;
+
+        font-size: 54px;
+      }
+    }
+  }
 }
