@@ -1,7 +1,26 @@
-$padding: 10vh;
+@import "../colors";
+
+$padding: 5vh;
 
 .main {
-  height: calc((100vh - 300px) - ($padding * 2));
+  height: calc((100vh - 350px) - ($padding * 2));
 
-  padding: $padding 20vw;
+  padding: $padding 15vw;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    height: calc(100% - (2 * 5vh));
+
+    padding: 5vh 5vw;
+
+    border-radius: 20px;
+    background-color: $blue_white;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
 }
