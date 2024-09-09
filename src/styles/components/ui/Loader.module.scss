@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 200px;
+
+  div {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 100%;
+    background-color: #FFFFFF;
+
+    animation: growth 1s linear forwards;
+
+    &:nth-of-type(2) {
+      animation-delay: 1s;
+    }
+
+    &:nth-of-type(3) {
+      animation-delay: 2s;
+    }
+
+    &:nth-of-type(4) {
+      animation-delay: 3s;
+    }
+
+    &:nth-of-type(5) {
+      animation-delay: 4s;
+    }
+  }
+}
+
+@keyframes growth {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../colors";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  color: #FFFFFF;
+  background-color: $main_blue;
+
+  h1 {
+    font-size: 70px;
+  }
+
+  p {
+    font-size: 35px;
+
+    margin: 20px 0;
+  }
+
+  .home_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 70px;
+
+    .icon {
+      color: #FFFFFF;
+      font-size: 30px;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .icon {
+        color: $light_blue;
+      }
+    }
+  }
+}

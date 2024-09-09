@@ -5,6 +5,7 @@ import styles from "../styles/components/PackOrder.module.scss";
 import { PACKS } from "./PackSelection";
 
 import PackOrderSlider from "./ui/PackOrderSlider";
+import { NavLink } from "react-router-dom";
 
 interface IPackOrderProps {
   selectedPacks: PACKS[]
@@ -108,9 +109,11 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
       </div>
 
       <div className={styles.generate_button_div}>
-        <button>
-          <p>Générer mon challenge</p>
-        </button>
+        <NavLink to="/test">
+          <button>
+            <p>Générer mon challenge</p>
+          </button>
+        </NavLink>
       </div>
     </section>
   );
