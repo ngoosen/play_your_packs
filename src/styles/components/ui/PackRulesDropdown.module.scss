@@ -24,19 +24,29 @@ $padding: 20px;
 
     &:hover {
       cursor: pointer;
-      color: $green_blue;
+      color: $blue_white;
     }
   }
 }
 
+$content_padding: 50px;
+
 .content {
-  width: 98%;
+  width: calc(98% - (2 * $content_padding));
   height: 0;
+
+  padding: 0 $content_padding;
 
   transform: translateY(-10px);
 
   border-radius: 0 0 10px 10px;
-  background-color: $light_blue;
+  background-color: $blue_white;
+
+  overflow: hidden;
+
+  ul {
+    margin-top: 20px;
+  }
 }
 
 .open {
