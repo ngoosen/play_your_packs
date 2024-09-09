@@ -13,7 +13,7 @@ export default function Checkbox(props: ICheckboxProps): JSX.Element {
     <div
       className={styles.main}
       style={{
-        backgroundColor: checked ? "#237477" : "#FFFFFF",
+        backgroundColor: checked ? "#0096eb" : "#FFFFFF",
       }}
     >
     </div>

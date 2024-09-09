@@ -1,3 +1,5 @@
+@import "../../colors";
+
 .main {
   appearance: none;
   border: none;
@@ -8,7 +10,7 @@
   align-items: center;
 
   width: 500px;
-  height: 70px;
+  height: 60px;
 
   border-radius: 50px;
 
@@ -16,11 +18,12 @@
 
   p {
     font-size: 25px;
-    color: rgb(35, 116, 119);
+    color: $main_blue;
   }
 
   &:hover {
     cursor: pointer;
+    transform: scale(1.05);
   }
 
   &:active {
