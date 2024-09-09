@@ -3,6 +3,32 @@
 .main {
   background-color: $main_blue;
 
+  .home_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 70px;
+
+    .icon {
+      color: #ffffff8a;
+      font-size: 30px;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .icon {
+        color: #FFFFFF;
+      }
+    }
+  }
+
   section {
     padding: 5vh 15vw;
 

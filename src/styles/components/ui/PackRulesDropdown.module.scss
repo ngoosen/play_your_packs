@@ -1,6 +1,10 @@
+@import "../../colors";
+
 $padding: 20px;
 
 .main {
+  position: relative;
+
   display: flex;
   align-items: center;
 
@@ -11,4 +15,54 @@ $padding: 20px;
 
   border-radius: 15px;
   background-color: #FFFFFF;
+
+  .arrow {
+    font-size: 30px;
+    color: $main_blue;
+
+    margin-right: 10px;
+
+    &:hover {
+      cursor: pointer;
+      color: $green_blue;
+    }
+  }
+}
+
+.content {
+  width: 98%;
+  height: 0;
+
+  transform: translateY(-10px);
+
+  border-radius: 0 0 10px 10px;
+  background-color: $light_blue;
+}
+
+.open {
+  animation: open_content .2s ease-out forwards;
+}
+
+.close {
+  animation: close_content .2s ease-out forwards;
+}
+
+$content_div_height: 500px;
+
+@keyframes open_content {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: $content_div_height;
+  }
+}
+
+@keyframes close_content {
+  0% {
+    height: $content_div_height;
+  }
+  100% {
+    height: 0;
+  }
 }
