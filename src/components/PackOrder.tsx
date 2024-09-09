@@ -106,6 +106,12 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
           />
         ))}
       </div>
+
+      <div className={styles.generate_button_div}>
+        <button>
+          <p>Générer mon challenge</p>
+        </button>
+      </div>
     </section>
   );
 }
