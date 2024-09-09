@@ -1,20 +1,14 @@
 import './App.scss';
 
-import Title from './components/Title';
-import Introduction from './components/Introduction';
-import RulesIntro from './components/RulesIntro';
-import PackSelection from './components/PackSelection';
+import { Route, Routes } from 'react-router-dom';
+
+import Home from './components/Home';
 
 function App() {
   return (
-    <>
-      <Title />
-      <main>
-        <Introduction />
-        <RulesIntro />
-        <PackSelection />
-      </main>
-    </>
+    <Routes>
+      <Route path='/' element={<Home />} />
+    </Routes>
   );
 }
 
