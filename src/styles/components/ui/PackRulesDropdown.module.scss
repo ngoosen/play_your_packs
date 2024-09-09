@@ -1,0 +1,14 @@
+$padding: 20px;
+
+.main {
+  display: flex;
+  align-items: center;
+
+  width: calc(100% - (2 * $padding));
+  height: 50px;
+
+  padding: 0 $padding;
+
+  border-radius: 15px;
+  background-color: #FFFFFF;
+}

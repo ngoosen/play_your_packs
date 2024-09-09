@@ -108,13 +108,15 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
         ))}
       </div>
 
-      <div className={styles.generate_button_div}>
-        <NavLink to="/test">
-          <button>
-            <p>Générer mon challenge</p>
-          </button>
-        </NavLink>
-      </div>
+      {order.length > 0 &&
+        <div className={styles.generate_button_div}>
+          <NavLink to={`/challenge/${order.join("-")}`}>
+            <button>
+              <p>Générer mon challenge</p>
+            </button>
+          </NavLink>
+        </div>
+      }
     </section>
   );
 }

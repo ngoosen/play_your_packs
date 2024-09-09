@@ -1,0 +1,18 @@
+@import "../colors";
+
+.main {
+  background-color: $main_blue;
+
+  section {
+    padding: 5vh 15vw;
+
+    .rules {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      margin: 20px 0;
+    }
+  }
+}
