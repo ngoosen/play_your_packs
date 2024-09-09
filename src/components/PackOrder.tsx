@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import styles from "../styles/components/PackOrder.module.scss";
 
 import { PACKS } from "./PackSelection";
@@ -16,6 +17,9 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
 
   const [order, setOrder] = useState<PACKS[]>([]);
   const [reordered, setReordered] = useState<boolean>(false);
+
+  const [animatedUp, setAnimatedUp] = useState<number | undefined>(1);
+  const [animatedDown, setAnimatedDown] = useState<number | undefined>(0);
 
   useEffect(() => {
     if (reordered) {
@@ -37,37 +41,49 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
   function reorderHandler(pack: PACKS, direction: "up" | "down") {
     setReordered(true);
 
-    setOrder(latest => {
-      if (direction === "up") {
-        if (latest[0] === pack) {
-          return latest;
-        }
+    let newArray: PACKS[] = [];
+    const animationDuration = 250;
 
-        const packIndex = latest.indexOf(pack);
+    if (direction === "up") {
+      const packIndex = order.indexOf(pack);
 
-        const before = latest.slice(0, packIndex);
-        const after = latest.slice(packIndex + 1);
+      const before = order.slice(0, packIndex);
+      const after = order.slice(packIndex + 1);
 
-        const newArray = [...before, ...after];
-        newArray.splice(packIndex - 1, 0, pack)
-
-        return newArray;
-      } else {
-        if (latest.slice(-1)[0] === pack) {
-          return latest;
-        }
-
-        const packIndex = latest.indexOf(pack);
-
-        const before = latest.slice(0, packIndex);
-        const after = latest.slice(packIndex + 1);
-
-        const newArray = [...before, ...after];
-        newArray.splice(packIndex + 1, 0, pack);
-
-        return newArray;
+      if (order[0] !== pack) {
+        setAnimatedUp(pack);
+        setAnimatedDown(before.slice(-1)[0]);
       }
-    });
+
+      newArray = [...before, ...after];
+      newArray.splice(packIndex - 1, 0, pack)
+    } else {
+      const packIndex = order.indexOf(pack);
+
+      const before = order.slice(0, packIndex);
+      const after = order.slice(packIndex + 1);
+
+      if (order.slice(-1)[0] !== pack) {
+        setAnimatedUp(after[0]);
+        setAnimatedDown(pack);
+      }
+
+      newArray = [...before, ...after];
+      newArray.splice(packIndex + 1, 0, pack);
+    }
+
+    setTimeout(() => {
+      setAnimatedUp(undefined);
+      setAnimatedDown(undefined);
+
+      setOrder(latest => {
+        if ((direction === "up" && latest[0] === pack) || (direction === "down" && latest.slice(-1)[0] === pack)) {
+          return latest;
+        }
+
+        return newArray;
+      });
+  }, animationDuration);
   }
 
   return (
@@ -81,7 +97,14 @@ export default function PackOrder(props: IPackOrderProps): JSX.Element {
 
         {(selectedPacks.length > 0 && !reordered) && <p>Ordre recommandé:</p>}
 
-        {selectedPacks.length > 0 && order.map(pack => <PackOrderSlider key={`pack_slider_${pack}`} pack={pack} onReorder={reorderHandler} />)}
+        {selectedPacks.length > 0 && order.map(pack => (
+          <PackOrderSlider
+            key={`pack_slider_${pack}`}
+            pack={pack}
+            onReorder={reorderHandler}
+            animate={animatedUp === pack ? "up" : (animatedDown === pack ? "down" : undefined)}
+          />
+        ))}
       </div>
     </section>
   );

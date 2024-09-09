@@ -8,6 +8,7 @@ import { PACKS } from "../PackSelection";
 interface IPackOrderSliderProps {
   pack: PACKS
   onReorder: CallableFunction
+  animate?: "up" | "down"
 }
 
 function getBackground(pack: PACKS): { color: string, shadow: string, } {
@@ -54,7 +55,7 @@ function getPackName(pack: PACKS): string {
 }
 
 export default function PackOrderSlider(props: IPackOrderSliderProps): JSX.Element {
-  const { pack, onReorder, } = props;
+  const { pack, onReorder, animate, } = props;
 
   function upHandler() {
     onReorder(pack, "up");
@@ -65,11 +66,14 @@ export default function PackOrderSlider(props: IPackOrderSliderProps): JSX.Eleme
   }
 
   return (
-    <div className={styles.main} style={{
-      backgroundImage: `url(/img/packs/sliders/${pack}.jpg)`,
-      backgroundColor: getBackground(pack).color,
-      boxShadow: getBackground(pack).shadow,
-    }}>
+    <div
+      className={`${styles.main} ${animate === "up" && styles.animate_up} ${animate === "down" && styles.animate_down}`}
+      style={{
+        backgroundImage: `url(/img/packs/sliders/${pack}.jpg)`,
+        backgroundColor: getBackground(pack).color,
+        boxShadow: getBackground(pack).shadow,
+      }}
+    >
       <p className={styles.pack_title}>{getPackName(pack)}</p>
       <div className={styles.sort_arrows}>
         <button onClick={upHandler}>

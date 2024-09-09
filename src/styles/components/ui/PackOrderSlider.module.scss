@@ -1,12 +1,15 @@
+$height: 30px;
+$padding: 10px;
+
 .main {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 100%;
-  height: 30px;
+  height: $height;
 
-  padding: 10px;
+  padding: $padding;
 
   border-radius: 10px;
 
@@ -57,5 +60,35 @@
         }
       }
     }
+  }
+}
+
+$animation_duration: .25s;
+
+.animate_up {
+  animation: animation_up $animation_duration ease-out;
+}
+
+.animate_down {
+  animation: animation_down $animation_duration ease-out;
+}
+
+@keyframes animation_up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(- calc($height + (2 * $padding) + 10px));
+    // last 10px is the margin, defined higher up in the parent div's gap property
+  }
+}
+
+@keyframes animation_down {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc($height + (2 * $padding) + 10px));
+    // last 10px is the margin, defined higher up in the parent div's gap property
   }
 }
