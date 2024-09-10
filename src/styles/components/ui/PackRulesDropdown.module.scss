@@ -17,6 +17,8 @@ $padding: 20px;
   border-radius: 15px;
   background-color: #FFFFFF;
 
+  transition: all .1s;
+
   div {
     display: flex;
     align-items: center;
@@ -31,8 +33,40 @@ $padding: 20px;
 
       &:hover {
         cursor: pointer;
-        color: $blue_white;
+        color: $light_blue;
       }
+    }
+  }
+
+  .checkbox_div {
+    p {
+      margin-right: 10px;
+
+      color: $main_blue;
+      color: #FFFFFF;
+
+      opacity: 0;
+      transition: all .1s;
+    }
+  }
+}
+
+.completed {
+  background-color: $light_blue;
+
+  .pack_title {
+    .arrow {
+      color: #FFFFFF;
+
+      &:hover {
+        color: $main_blue;
+      }
+    }
+  }
+
+  .checkbox_div {
+    p {
+      opacity: 1;
     }
   }
 }

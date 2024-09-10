@@ -14,6 +14,7 @@
     clip-path: polygon(10% 40%, 35% 65%, 90% 5%, 100% 20%, 35% 90%, 0 50%);
 
     background-color: $main_blue;
+    background-color: #FFFFFF;
 
     opacity: 0;
     transform: rotate(-90deg);
@@ -24,7 +25,7 @@
   }
 }
 
-$animation_duration: .3s;
+$animation_duration: .2s;
 
 .checked {
   animation: container_animation $animation_duration cubic-bezier(0.075, 0.82, 0.165, 1) both;
@@ -48,7 +49,7 @@ $animation_duration: .3s;
     transform: rotate(0);
   }
   100% {
-    border-color: #FFFFFF;
+    border-color: $light_blue;
     transform: rotate(90deg);
   }
 }
@@ -67,7 +68,7 @@ $animation_duration: .3s;
 
 @keyframes container_animation_reverse {
   0% {
-    border-color: #FFFFFF;
+    border-color: $light_blue;
     transform: rotate(90deg);
   }
   100% {

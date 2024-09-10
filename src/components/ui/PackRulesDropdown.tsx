@@ -32,13 +32,14 @@ export default function PackRulesDropdown(props: IPackRuleDropdownProps): JSX.El
 
   return (
     <>
-      <div className={styles.main}>
+      <div className={`${styles.main} ${ruleCompleted && styles.completed}`}>
         <div className={styles.pack_title}>
           <FontAwesomeIcon icon={opened ? faCaretUp : faCaretDown} className={styles.arrow} onClick={clickHandler} />
           <h3>{getPackName(pack)}</h3>
         </div>
-        <div>
-          <p>Complété</p>
+
+        <div className={styles.checkbox_div}>
+          <p>Pack complété</p>
           <AnimatedCheckbox checked={ruleCompleted} onToggle={completeRuleHandler} />
         </div>
       </div>
