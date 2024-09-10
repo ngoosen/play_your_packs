@@ -1,0 +1,86 @@
+@import "../../colors";
+
+.container {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 5px;
+  border: 2px solid $main_blue;
+
+  .main {
+    width: 20px;
+    height: 20px;
+
+    clip-path: polygon(10% 40%, 35% 65%, 90% 5%, 100% 20%, 35% 90%, 0 50%);
+
+    background-color: $main_blue;
+
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+$animation_duration: .3s;
+
+.checked {
+  animation: container_animation $animation_duration cubic-bezier(0.075, 0.82, 0.165, 1) both;
+
+  .main {
+    animation: check_animation $animation_duration cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  }
+}
+
+.unchecked {
+  animation: container_animation_reverse $animation_duration cubic-bezier(0.075, 0.82, 0.165, 1) both;
+
+  .main {
+    animation: check_animation_reverse $animation_duration cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  }
+}
+
+@keyframes container_animation {
+  0% {
+    border-color: $main_blue;
+    transform: rotate(0);
+  }
+  100% {
+    border-color: #FFFFFF;
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes check_animation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes container_animation_reverse {
+  0% {
+    border-color: #FFFFFF;
+    transform: rotate(90deg);
+  }
+  100% {
+    border-color: $main_blue;
+    transform: rotate(0);
+  }
+}
+
+@keyframes check_animation_reverse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

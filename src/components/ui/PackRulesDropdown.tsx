@@ -8,6 +8,8 @@ import { PACKS } from "../PackSelection";
 import getPackName from "../../lib/getPackName";
 import { rules } from "../../lib/rules";
 
+import AnimatedCheckbox from "./AnimatedCheckbox";
+
 interface IPackRuleDropdownProps {
   pack: PACKS
   opened: boolean
@@ -17,24 +19,36 @@ interface IPackRuleDropdownProps {
 export default function PackRulesDropdown(props: IPackRuleDropdownProps): JSX.Element {
   const { pack, opened, onToggle, } = props;
   const [init, setInit] = useState<boolean>(true);
+  const [ruleCompleted, setRuleCompleted] = useState<boolean>(false);
 
   function clickHandler() {
     setInit(false);
     onToggle(opened ? undefined : pack);
   }
 
+  function completeRuleHandler() {
+    setRuleCompleted(latest => !latest);
+  }
+
   return (
     <>
       <div className={styles.main}>
-        <FontAwesomeIcon icon={opened ? faCaretUp : faCaretDown} className={styles.arrow} onClick={clickHandler} />
-        <h3>{getPackName(pack)}</h3>
+        <div className={styles.pack_title}>
+          <FontAwesomeIcon icon={opened ? faCaretUp : faCaretDown} className={styles.arrow} onClick={clickHandler} />
+          <h3>{getPackName(pack)}</h3>
+        </div>
+        <div>
+          <p>Complété</p>
+          <AnimatedCheckbox checked={ruleCompleted} onToggle={completeRuleHandler} />
+        </div>
       </div>
 
       <div className={`${styles.content} ${!opened && !init && styles.close} ${opened && styles.open}`}>
         <ul>
           {rules[pack].ruleList.map(rule => <li>{rule}</li>)}
-          {rules[pack].remarks?.map(remark => <p>{remark}</p>)}
         </ul>
+
+        {rules[pack].remarks?.map(remark => <p>{remark}</p>)}
       </div>
     </>
   );

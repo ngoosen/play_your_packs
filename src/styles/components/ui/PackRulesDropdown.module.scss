@@ -6,6 +6,7 @@ $padding: 20px;
   position: relative;
 
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   width: calc(100% - (2 * $padding));
@@ -16,15 +17,22 @@ $padding: 20px;
   border-radius: 15px;
   background-color: #FFFFFF;
 
-  .arrow {
-    font-size: 30px;
-    color: $main_blue;
+  div {
+    display: flex;
+    align-items: center;
+  }
 
-    margin-right: 10px;
+  .pack_title {
+    .arrow {
+      font-size: 30px;
+      color: $main_blue;
 
-    &:hover {
-      cursor: pointer;
-      color: $blue_white;
+      margin-right: 10px;
+
+      &:hover {
+        cursor: pointer;
+        color: $blue_white;
+      }
     }
   }
 }
