@@ -1,7 +1,7 @@
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../styles/components/ChallengeBreakdown.module.scss";
 
@@ -19,7 +19,8 @@ export default function ChallengeBreakdown(): JSX.Element {
   useEffect(() => {
     if (pack_order) {
       setPacks(() => {
-        const splitArray = pack_order.split("-");
+        const splitArray = pack_order.split("-")
+          .filter(pack => pack !== "" && !isNaN(parseInt(pack)));
         return splitArray.map(pack => parseInt(pack));
       });
     }
@@ -40,6 +41,13 @@ export default function ChallengeBreakdown(): JSX.Element {
       <section>
         <h2>Titre</h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo impedit sit suscipit totam accusamus? A quas, quidem ea quos officia facere neque deleniti id voluptatem sed voluptas, asperiores numquam dicta?</p>
+
+        {packs.length === 0 && (
+          <article className={styles.no_pack}>
+            <p>Il semblerait que tu n'as pas sélectionné de pack !</p>
+            <p><NavLink to="/" className={styles.link}>Retourne à l'accueil</NavLink> pour générer ton challenge sur base des packs auxquels tu veux jouer !</p>
+          </article>
+        )}
 
         <div className={styles.rules}>
           {packs.map(pack => (

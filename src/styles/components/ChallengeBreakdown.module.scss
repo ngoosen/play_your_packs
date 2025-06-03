@@ -1,6 +1,8 @@
 @import "../colors";
 
 .main {
+  height: 100vh;
+
   background-color: $main_blue;
 
   .home_button {
@@ -31,6 +33,23 @@
 
   section {
     padding: 5vh 15vw;
+
+    .no_pack {
+      margin-top: 100px;
+
+      p {
+        font-size: 26px;
+        text-align: center;
+
+        .link {
+          color: #FFFFFF;
+
+          &:hover {
+            color: $blue_white;
+          }
+        }
+      }
+    }
 
     .rules {
       display: flex;
