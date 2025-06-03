@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styles from "../styles/components/Title.module.scss";
 
 import Parallax from "./ui/Parallax";
@@ -6,7 +7,7 @@ export default function Title(): JSX.Element {
   return (
     <Parallax img="/img/landing_banner.jpg" className={styles.main}>
       {/* <img src="/img/title.jpg" alt="" /> */}
-      <a href="/">
+      <NavLink to="/">
         <div className={styles.title}>
           <h1>
             <span id={styles.asaide}>
@@ -20,7 +21,7 @@ export default function Title(): JSX.Element {
             </span>
           </h1>
         </div>
-      </a>
+      </NavLink>
     </Parallax>
   );
 }
